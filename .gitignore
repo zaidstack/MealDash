@@ -1,0 +1,6 @@
+following files don't need to push in git
+
+
+/node_modules
+/dist
+.parcel-cache

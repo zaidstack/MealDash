@@ -1,33 +1,36 @@
-/**
-  * 
-  * <div id ="parent">
-  *       <div id="child">
-  *          <h1> I'm an h1 tag</h1>
-  *           <h2> I'm an h1 tag</h2>
-  *        </div>
-  * <div id="child2">
-  *          <h1> I'm an h1 tag</h1>
-  *           <h2> I'm an h1 tag</h2>
-  *        </div>
-  * </div>
-  *  
-  */
-  
- 
-const parent = React.createElement("div",{ id:"parent"}, 
-    [ React.createElement("div",{ id:"child"}, [
-     React.createElement("h1",{},"I'm an h1 tag"),
-     React.createElement("h2",{},"I'm an h2 tag"),
- ]) , React.createElement("div",{ id:"child2"}, [
-     React.createElement("h1",{},"I'm an h1 tag"),
-     React.createElement("h2",{},"I'm an h2 tag"),
- ])         ]
-  ); 
-  
+import React from "react";
+import ReactDOM from "react-dom/client";
    
-  console.log(parent);
+// JSX (transpiled before it reaches thr JS)  - PARCEL - Babel
+
+// React.createElmenet ==> object ==> HTMLElement(render)
+
+   // React Element
+
+   const elem = <span>React Element</span>
+     const Title = ()=> (   // Arrow function is a good way to declare function
+        <h1 className="head" tabIndex="5">
+           
+          Namaste React using JSX🧨
+          {elem}   
+        </h1>);
+
+ // JSX - HTML - like or XML- like  syntax
+ const number = 10000;
+
+
+const HeadingComponent = () => (      //  React Functional Component
+    <div id = "container">
+        {Title()}        <Title></Title>
+      <h2>{console.log(100+2000-200)}</h2>      
+      <h1 className="heading"> Namaste React Functional component🎈</h1>
+      
+   </div>
+); 
  
- 
- const root = ReactDOM.createRoot(document.getElementById("root"));
- 
- root.render(parent);            
+
+console.log(HeadingComponent);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<HeadingComponent/>);               
