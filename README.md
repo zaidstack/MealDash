@@ -19,3 +19,21 @@
 -Https
 -Tree Shaking --Remove unused code
 Different dev and prod bundles
+
+
+#  two types of Routing in web apps
+  Client Side Routing
+  Server Side Routing 
+
+
+
+  # Redux Toolkit
+    - Install @reduxjs/toolkit and react-redux
+     -Build our store
+     - Connect our store to app
+     - Slice (cartslice)
+     -dispatch(action)
+     -Selector
+     
+
+     

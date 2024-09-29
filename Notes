@@ -1,0 +1,86 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+   
+// JSX (transpiled before it reaches thr JS)  - PARCEL - Babel
+
+// React.createElmenet ==> object ==> HTMLElement(render) 
+
+   // React Element
+
+//    const elem = <span>React Element</span>
+//      const Title = ()=> (   // Arrow function is a good way to declare function
+//         <h1 className="head" tabIndex="5">
+           
+//           Namaste React using JSX🧨
+//           {elem}   
+//         </h1>);
+
+//  // JSX - HTML - like or XML- like  syntax
+//  const number = 10000;
+
+
+// const HeadingComponent = () => (      //  React Functional Component
+//     <div id = "container">
+//         {Title()}    
+//         <Title></Title>
+         
+//       <h1 className="heading"> Namaste React Functional component🎈</h1>
+      
+//    </div>
+// ); 
+ 
+
+// console.log(HeadingComponent);
+
+
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// root.render(<HeadingComponent/>);   // way to render functional component end with          
+ //not using keys (not acceptable) <<<<<<< index as key <<<<<<<<<<< unique id (best practice)
+
+
+
+ import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+ 
+const RestaurantDish = () =>{
+
+    const [resInfo, setResInfo] = useState(null);
+
+   useEffect(()=>{
+      fetchMenu();
+   },[]);
+
+   const fetchMenu= async ()=>{
+       const data = await fetch(
+           "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+           );
+           const json = await data.json();
+
+           console.log(json);
+           setResInfo(json.data);
+      
+   };
+   
+      const {name, cuisines,costForTwo} = resInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.[0]
+
+   return resInfo===null ? ( 
+      <Shimmer />
+   ):(
+       <div className="menu">
+       <h1>{name}</h1>
+       <p>
+        {cuisines.join(", ")} - {costForTwo}    
+        </p>
+        <h2>Menu</h2>
+       <ul>
+           <li> Biryani</li>
+           <li>Burgers</li>
+           <li>Diet Coke</li>
+       </ul>
+       </div>
+   );
+};
+
+export default RestaurantDish;
